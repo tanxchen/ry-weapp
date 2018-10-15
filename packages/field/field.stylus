@@ -1,0 +1,6 @@
+.test
+  font-size:34px
+  color blue
+  .inside
+    color red
+    font-size 26px

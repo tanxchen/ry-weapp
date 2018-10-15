@@ -1,0 +1,6 @@
+<view class="test">
+  field.wxml
+  <view class="inside">
+    inside text  username: {{ username }}
+  <view>
+</view>
