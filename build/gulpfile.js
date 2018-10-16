@@ -1,11 +1,10 @@
 const path = require('path');
+const postcss = require('gulp-postcss');
 const gulp = require('gulp');
-// const less = require('gulp-less');
 const stylus = require('gulp-stylus');
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
-const cssmin = require('gulp-clean-css');
-const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
 
 const src = path.join(__dirname, '../packages');
 const dist = path.join(__dirname, '../examples/dist');
@@ -19,8 +18,9 @@ gulp.task('compile-stylus', () => {
   return gulp
     .src([src + '/**/*.stylus'])
     .pipe(stylus())
-    // .pipe(postcss())
-    // .pipe(cssmin())
+    .pipe(postcss([
+      // cssnano()
+    ]))
     .pipe(
       rename(path => {
         path.extname = '.wxss';
