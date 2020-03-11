@@ -1,0 +1,50 @@
+<view catchtap="stopProp">
+  <view class="sq-carlicense-wrapper">
+    <view class="sq-carlicense-province" catchtap="showProvince">{{currentProvince}}</view>
+    <view class="sq-carlicense-energy" catchtap="showNumber">
+      <view data-content="请输入车牌号"
+        class="{{ placeholderColorC ? 'sq-carlicense-placeholder-color-ccc' : '' }} sq-carlicense-number {{isShowNumberKeyboard ? '' : 'blur'}} {{currentNumber ? 'hidden-placeholder' : ''}}">
+        {{currentNumber}}</view>
+      <text wx:if="{{currentNumber && isShowNumberKeyboard}}" class="sq-icon sq-icon-error-full sq-carlicense-del-icon"
+        catchtap="delCurrentNumber"></text>
+    </view>
+  </view>
+  <!-- 省会键盘 -->
+  <view
+    class="sq-fix-iphonex-btn sq-carlicense-province-wrapper {{ isShowProvinceKeyboard ? 'ry-slide-bottom-enter' : 'ry-slide-bottom-leave'}}"
+    bindtap="clickProvince">
+    <view class="sq-carlicense-close-btn">
+      <view class="sq-carlicense-close-btn-text" bindtap="cilicMark">关闭</view>
+    </view>
+    <view class="sq-carlicense-row-wrapper {{(pIndex === (provinceList.length -1)) ? 'last' : ''}}"
+      wx:for="{{provinceList}}" wx:for-item="rowProvince" wx:for-index="pIndex" wx:key="pIndex">
+      <view
+        class="sq-carlicense-row-wrapper-item {{isProvince ? '' : 'sq-carlicense-disabled'}} {{(pIndex === (provinceList.length -1) && index === (rowProvince.length -1)) ? 'last' : ''}}"
+        hover-class="sq-carlicense-key-active" hover-start-time="0" hover-stay-time="80" wx:for="{{rowProvince}}"
+        wx:for-item="province" wx:key="index" data-val="{{province}}">{{ province }}</view>
+    </view>
+  </view>
+  <!-- 数字、英文键盘 -->
+  <view
+    class="sq-fix-iphonex-btn sq-carlicense-province-wrapper {{ isShowNumberKeyboard ? 'ry-slide-bottom-enter' : 'ry-slide-bottom-leave'}}"
+    bindtap="clickNumber">
+    <view class="sq-carlicense-close-btn">
+      <view class="sq-carlicense-close-btn-text" bindtap="cilicMark">{{ isColseText ? '关闭' : '完成' }}</view>
+    </view>
+    <view class="sq-carlicense-row-wrapper {{(rowIndex === (keyboardList.length -1)) ? 'last' : ''}}"
+      wx:for="{{keyboardList}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowIndex">
+      <view
+        class="sq-carlicense-row-wrapper-item {{ !rowIndex && !currentNumber || (currentNumber.length === 1 && (key === 'I' || key === 'O')) ? 'disabled' : '' }} {{ key === 'DEL' ? 'transparent' : '' }}"
+        hover-class="{{ key === 'UP' ? '' : 'sq-carlicense-key-active' }}" hover-start-time="0" hover-stay-time="80"
+        wx:for="{{row}}" wx:for-item="key" wx:key="index" data-val="{{key}}">
+        <text class="sq-icon sq-icon-keyboard-xiangshang upkey" wx:if="{{ key === 'UP' }}" data-val="{{key}}"></text>
+        <text class="sq-icon sq-icon-keyboard-delete delkey" wx:elif="{{ key === 'DEL' }}" data-val="{{key}}"></text>
+        <block wx:else data-val="{{key}}">{{ key }}</block>
+      </view>
+    </view>
+  </view>
+  <view style="top:{{ tipTop }}px;left: {{tipLeft}}px;"
+    class="sq-carlicense-tip-text"
+    hidden="{{ !isShowTipBlock }}"
+  >{{ tipText }}</view>
+</view>

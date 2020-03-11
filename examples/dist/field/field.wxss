@@ -1,8 +1,0 @@
-.test {
-  font-size: 34px;
-  color: #00f;
-}
-.test .inside {
-  color: #f00;
-  font-size: 28px;
-}

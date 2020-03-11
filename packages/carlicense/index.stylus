@@ -1,0 +1,208 @@
+@supports (bottom: constant(safe-area-inset-bottom)) {
+  .sq-fix-iphonex-btn {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: #fff;
+  }
+}
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+  .sq-fix-iphonex-btn {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: #fff;
+  }
+}
+
+.ry-slide-bottom-enter {
+  animation: ry-slide-bottom-enter .3s both ease;
+  display: flex !important;
+}
+.ry-slide-bottom-leave {
+  animation: ry-slide-bottom-leave .3s both ease;
+  display: none !important;
+}
+
+.sq-carlicense-wrapper {
+  box-sizing: border-box;
+  height: 48px;
+  background-color: #FFFFFF;
+  position: relative;
+  color: #878787;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.sq-carlicense-province {
+  width: 34px;
+  height: 36px;
+  position: relative;
+  font-size: 16px;
+  color: #000000;
+  line-height: 16px;
+  box-sizing: border-box;
+  /* border: 1px solid #5373C6; */
+  margin-right: 16px;
+  padding: 9px 6px;
+  border-radius: 4px;
+  // background-color: #5373C6;
+}
+.sq-carlicense-province::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  position: absolute;
+  right: -2px;
+  top: 10px;
+  transform: rotate(45deg);
+}
+.sq-carlicense-energy {
+  flex: 1;
+  height: 100%;
+  display: flex;
+}
+.sq-carlicense-number {
+  display:flex;
+  align-items:center;
+  height: 100%;
+  flex: 1;
+  position: relative;
+  color:#333;
+}
+.sq-carlicense-number::before {
+  content: attr(data-content);
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  color: #878787;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.sq-carlicense-placeholder-color-ccc.sq-carlicense-number::before {
+  color: #ccc;
+}
+.hidden-placeholder.sq-carlicense-number::before {
+  opacity: 0;
+}
+
+.sq-carlicense-number::after
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  animation: blink 1s infinite step-start;
+  background-color: #000;
+
+.blur.sq-carlicense-number::after
+  display: none;
+
+.sq-carlicense-tip-text
+  box-sizing: border-box;
+  position: fixed;
+  background: white;
+  margin: 0 auto;
+  width: 44px;
+  height: 46px;
+  line-height: 46px;
+  color: #418af9;
+  font-size: 28px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 1px 2px #DDDDDD;
+  z-index: 100;
+  top: -100px;
+
+.sq-carlicense-province-wrapper {
+  position: fixed;
+  left: 0;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  background-color: #cad1d9;
+  flex-direction: column;
+  min-height: 184px;
+  z-index: 99;
+}
+.sq-carlicense-close-btn {
+  display: flex;
+  color:#498fe2;
+  justify-content: flex-end;
+  flex: 1;
+}
+.sq-carlicense-close-btn-text {
+  padding: 6px 12px 4px;
+  font-size: 14px;
+}
+.sq-carlicense-row-wrapper {
+  display: flex;
+  padding: 8px 4px 0;
+  flex: 1;
+  height: 40px;
+  box-sizing: border-box;
+}
+.sq-carlicense-row-wrapper.last {
+  margin-bottom: 8px;
+}
+.sq-carlicense-row-wrapper-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  padding: 2px 2px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border: 0;
+  box-sizing: border-box;
+  color #333
+}
+.sq-carlicense-key-active {
+  background-color: #a8aebc;
+  color: #dcdfe4;
+}
+.sq-carlicense-row-wrapper-item.last {
+  background-color: transparent;
+}
+.sq-carlicense-row-wrapper-item.disabled {
+  background-color: #fff;
+  color: #ccc;
+}
+.sq-carlicense-row-wrapper-item .upkey {
+  background-color: #fff;
+  color: #ccc;
+  font-size: 22px;
+}
+.sq-carlicense-row-wrapper-item .delkey {
+  color: #2c3e50;
+  font-size: 22px;
+  background-color: transparent;
+}
+.sq-carlicense-row-wrapper-item.transparent {
+  background-color: transparent;
+  &.sq-carlicense-key-active {
+    background-color: #a8aebc;
+    color: #dcdfe4;
+  }
+}
+
+.sq-carlicense-del-icon {
+  position:absolute;
+  right:12px;
+  top:0;
+  height:100%;
+  line-height:100%;
+  width:24px;
+  display:flex;
+  align-items:center;
+  font-size:1em;
+  justify-content:center;
+  color:#aaa;
+}
